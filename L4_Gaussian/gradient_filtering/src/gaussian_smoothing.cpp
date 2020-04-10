@@ -19,7 +19,9 @@ void gaussianSmoothing1()
                             4, 16, 26, 16, 4,
                             1, 4, 7, 4, 1};
     for (float& elem : gauss_data) {
-        elem /= 255.;
+        // scaling factor from gaussian distribution,
+        // not 255 depth scaling
+        elem /= 273.;
     }
 
     cv::Mat kernel = cv::Mat(5, 5, CV_32F, gauss_data);
