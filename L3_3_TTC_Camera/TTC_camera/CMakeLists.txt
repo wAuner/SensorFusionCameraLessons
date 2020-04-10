@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 add_definitions(-std=c++11)
 
+set(OpenCV_DIR ~/opencv-4.1.1/installation/lib/cmake/opencv4)
 set(CXX_FLAGS "-Wall" "-pedantic")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
