@@ -51,6 +51,19 @@ void detKeypoints1()
     // detector and compare both algorithms with regard to 
     // (a) number of keypoints, (b) distribution of 
     // keypoints over the image and (c) processing speed.
+    std::vector<cv::KeyPoint> fastKeyPoints;
+    int threshold = 50;
+    t = (double)cv::getTickCount();
+    cv::FAST(imgGray, fastKeyPoints, threshold);
+    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+    cout << "FAST with n= " << fastKeyPoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
+
+    cv::Mat fastImage = img.clone();
+    cv::drawKeypoints(img, fastKeyPoints, fastImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+    cv::imshow("fast", fastImage);
+    cv::waitKey(0);
+
+
 }
 
 int main()
